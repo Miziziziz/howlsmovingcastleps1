@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://witch_cart_and_minions/witchcart.glb" type="PackedScene" id=1]
 [ext_resource path="res://witch_cart_and_minions/Cart.tres" type="Material" id=2]
@@ -10,8 +10,13 @@
 [ext_resource path="res://witch_cart_and_minions/window_frame4.png" type="Texture" id=8]
 [ext_resource path="res://witch_cart_and_minions/witchminion.glb" type="PackedScene" id=9]
 [ext_resource path="res://witch_cart_and_minions/Minion.tres" type="Material" id=10]
+[ext_resource path="res://city.png" type="Texture" id=11]
+[ext_resource path="res://Background.gd" type="Script" id=12]
+[ext_resource path="res://TextDisplay.tscn" type="PackedScene" id=13]
+[ext_resource path="res://sophies/OldSophie.tscn" type="PackedScene" id=14]
+[ext_resource path="res://sophies/OldSophie.gd" type="Script" id=15]
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 5 )
 shader_param/color = Color( 1, 1, 1, 1 )
 shader_param/alpha_scissor_threshold = 0.4
@@ -22,7 +27,7 @@ shader_param/uv_scale = Vector2( 1, 1 )
 shader_param/uv_offset = Vector2( 0, 0 )
 shader_param/albedoTex = ExtResource( 6 )
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 5 )
 shader_param/color = Color( 1, 1, 1, 1 )
 shader_param/alpha_scissor_threshold = 0.4
@@ -33,7 +38,7 @@ shader_param/uv_scale = Vector2( 1, 1 )
 shader_param/uv_offset = Vector2( 0, 0 )
 shader_param/albedoTex = ExtResource( 7 )
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 5 )
 shader_param/color = Color( 1, 1, 1, 1 )
 shader_param/alpha_scissor_threshold = 0.4
@@ -44,7 +49,7 @@ shader_param/uv_scale = Vector2( 1, 1 )
 shader_param/uv_offset = Vector2( 0, 0 )
 shader_param/albedoTex = ExtResource( 8 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "talk"
 length = 0.8
 loop = true
@@ -97,8 +102,7 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "walk-loop"
+[sub_resource type="Animation" id=5]
 length = 0.833333
 loop = true
 tracks/0/type = "transform"
@@ -172,64 +176,260 @@ tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = PoolRealArray( 0, 1, 5.72225e-18, -0.0520514, 0.0171157, 0.110872, 6.91256e-19, -3.49654e-17, 0.993835, 1, 1, 1, 0.0666667, 1, 5.72226e-18, -0.052197, 0.0171636, 0.106733, 6.91318e-19, -3.49683e-17, 0.994288, 1, 1, 1, 0.2, 1, 5.8589e-18, -0.0535567, 0.0176107, 0.0680124, 4.70598e-19, -2.38038e-17, 0.997684, 1, 1, 1, 0.266667, 1, 5.89307e-18, -0.0532894, 0.0175228, 0.0756305, 4.15481e-19, -2.10155e-17, 0.997136, 1, 1, 1, 0.333333, 1, 5.89305e-18, -0.0525982, 0.0172956, 0.0953194, 4.15505e-19, -2.10169e-17, 0.995447, 1, 1, 1, 0.4, 1, -1.07615e-18, -0.0521161, 0.017137, 0.109036, -2.48555e-19, 1.25737e-17, 0.994038, 1, 1, 1, 0.466667, 1, -5.7223e-18, -0.05229, 0.0171942, 0.104089, -6.91322e-19, 3.49699e-17, 0.994568, 1, 1, 1, 0.533333, 1, -5.7223e-18, -0.0529662, 0.0174165, 0.0848412, -6.91395e-19, 3.49738e-17, 0.996395, 1, 1, 1, 0.6, 1, -5.7906e-18, -0.0535082, 0.0175948, 0.0693925, -5.80935e-19, 2.93861e-17, 0.997589, 1, 1, 1, 0.666667, 1, -5.8931e-18, -0.0534436, 0.0175735, 0.0712356, -4.15424e-19, 2.10141e-17, 0.99746, 1, 1, 1, 0.8, 1, -3.57004e-18, -0.0521807, 0.0171583, 0.107199, -1.94095e-19, 9.8182e-18, 0.994238, 1, 1, 1, 0.833333, 1, 5.72225e-18, -0.0520514, 0.0171157, 0.110872, 6.91256e-19, -3.49654e-17, 0.993835, 1, 1, 1 )
 
+[sub_resource type="Animation" id=6]
+length = 0.833333
+loop = true
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Armature:head")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, -5.96046e-08, -3.63216e-08, -0.0968366, 3.96604e-17, -2.53841e-17, 0.9953, 1, 1, 1, 0.0666667, 1, 0, -5.96046e-08, -3.63216e-08, -0.0904922, 3.96682e-17, -2.53892e-17, 0.995897, 1, 1, 1, 0.2, 1, 2.64698e-23, -5.96046e-08, -3.63216e-08, -0.031105, 1.74304e-17, -1.11562e-17, 0.999516, 1, 1, 1, 0.266667, 1, 2.64698e-23, -5.96046e-08, -4.65661e-10, -0.0427872, 1.18742e-17, -7.59993e-18, 0.999084, 1, 1, 1, 0.333333, 1, -5.29396e-23, -5.96046e-08, -3.63216e-08, -0.0729902, 1.1876e-17, -7.60111e-18, 0.997333, 1, 1, 1, 0.4, 1, -2.64698e-23, -1.19209e-07, -6.00703e-08, -0.0940221, -1.90474e-17, 1.21911e-17, 0.99557, 1, 1, 1, 0.466667, 1, 0, -2.38419e-07, -8.42847e-08, -0.0864391, -3.96724e-17, 2.53918e-17, 0.996257, 1, 1, 1, 0.533333, 1, -1.05879e-22, -5.96046e-08, -8.3819e-08, -0.0569157, -3.96827e-17, 2.53984e-17, 0.998379, 1, 1, 1, 0.6, 1, 2.64698e-23, -5.96046e-08, -4.65661e-10, -0.0332208, -2.85495e-17, 1.82727e-17, 0.999448, 1, 1, 1, 0.666667, 1, 0, -5.96046e-08, 2.32831e-08, -0.0360465, -1.18724e-17, 7.59872e-18, 0.99935, 1, 1, 1, 0.8, 1, -1.05879e-22, -1.78814e-07, -8.42847e-08, -0.0912069, -1.56578e-18, 1.00213e-18, 0.995832, 1, 1, 1, 0.833333, 1, 0, -5.96046e-08, -3.63216e-08, -0.0968366, 3.96604e-17, -2.53841e-17, 0.9953, 1, 1, 1 )
+tracks/1/type = "transform"
+tracks/1/path = NodePath("Armature:lowerleg.l")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray( 0, 1, 0, 0, -2.23517e-08, 7.0618e-07, -3.48101e-08, 0.123188, 0.992383, 1, 1, 1, 0.0666667, 1, 0, -2.98023e-08, -2.23517e-08, 7.1659e-07, -1.22587e-08, 0.122736, 0.992439, 1, 1, 1, 0.2, 1, -7.45058e-09, 0, -2.23517e-08, 6.6292e-07, -2.78004e-08, 0.118516, 0.992952, 1, 1, 1, 0.266667, 1, 3.72529e-08, 0, -2.23517e-08, 7.92087e-07, -5.76783e-08, 0.138347, 0.990384, 1, 1, 1, 0.333333, 1, -2.98023e-08, 5.96046e-08, -2.23517e-08, 1.16717e-06, -1.22478e-08, 0.196376, 0.980529, 1, 1, 1, 0.4, 1, -7.45058e-09, -2.98023e-08, -2.23517e-08, 1.74294e-06, 3.87903e-08, 0.292593, 0.956237, 1, 1, 1, 0.466667, 1, -7.45058e-09, -8.9407e-08, -2.23517e-08, 2.46527e-06, 5.88466e-08, 0.411107, 0.911587, 1, 1, 1, 0.533333, 1, -5.96046e-08, 2.98023e-08, -2.42144e-08, 3.03035e-06, 8.22512e-09, 0.523604, 0.851962, 1, 1, 1, 0.6, 1, -2.23517e-08, -2.98023e-08, -2.23517e-08, 3.45244e-06, 5.22276e-10, 0.587369, 0.809319, 1, 1, 1, 0.666667, 1, -7.45058e-09, -2.98023e-08, -2.23517e-08, 3.29286e-06, 1.25306e-08, 0.554731, 0.832029, 1, 1, 1, 0.733333, 1, -4.47035e-08, -2.98023e-08, -2.23517e-08, 2.10081e-06, -6.67982e-08, 0.358047, 0.933704, 1, 1, 1, 0.8, 1, 0, 0, -2.23517e-08, 9.49234e-07, 7.39458e-10, 0.164372, 0.986398, 1, 1, 1, 0.833333, 1, 0, 0, -2.23517e-08, 7.0618e-07, -3.48101e-08, 0.123188, 0.992383, 1, 1, 1 )
+tracks/2/type = "transform"
+tracks/2/path = NodePath("Armature:upperleg.l")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = PoolRealArray( 0, 1, -2.23517e-08, 8.19564e-08, 4.09782e-08, 0.238062, -0.0155583, 0.00171372, 0.971124, 1, 1, 1, 0.0666667, 1, -2.23517e-08, 1.56462e-07, 3.35276e-08, 0.194608, -0.012719, 0.00140065, 0.980798, 1, 1, 1, 0.133333, 1, -2.98023e-08, 1.86265e-07, 3.35276e-08, -0.0364171, 0.00237758, -0.000263695, 0.999334, 1, 1, 1, 0.2, 1, -2.98023e-08, 1.3411e-07, 3.35276e-08, -0.228801, 0.0149514, -0.00164892, 0.973357, 1, 1, 1, 0.266667, 1, -3.72529e-08, 1.56462e-07, 3.72529e-08, -0.217504, 0.0142125, -0.00156776, 0.975955, 1, 1, 1, 0.333333, 1, -2.23517e-08, 8.19564e-08, 2.98023e-08, -0.137788, 0.00900291, -0.000994262, 0.99042, 1, 1, 1, 0.4, 1, -2.98023e-08, 1.2666e-07, 3.35276e-08, 0.00894777, -0.000586363, 6.29409e-05, 0.99996, 1, 1, 1, 0.466667, 1, -3.72529e-08, 1.78814e-07, 2.98023e-08, 0.20667, -0.0135071, 0.00148704, 0.978316, 1, 1, 1, 0.533333, 1, -2.23517e-08, 8.19564e-08, 4.09782e-08, 0.409881, -0.0267846, 0.00295307, 0.911741, 1, 1, 1, 0.6, 1, -4.47035e-08, 1.71363e-07, 4.09782e-08, 0.528676, -0.0345475, 0.00381099, 0.848112, 1, 1, 1, 0.666667, 1, -2.98023e-08, 2.01166e-07, 3.35276e-08, 0.517785, -0.0338363, 0.00373189, 0.854833, 1, 1, 1, 0.733333, 1, -2.23517e-08, 4.47035e-08, 4.09782e-08, 0.389046, -0.025424, 0.00280284, 0.920863, 1, 1, 1, 0.8, 1, -3.72529e-08, 1.71363e-07, 3.35276e-08, 0.264964, -0.0173164, 0.00190789, 0.964101, 1, 1, 1, 0.833333, 1, -2.23517e-08, 8.19564e-08, 4.09782e-08, 0.238062, -0.0155583, 0.00171372, 0.971124, 1, 1, 1 )
+tracks/3/type = "transform"
+tracks/3/path = NodePath("Armature:lowerarm.l")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = PoolRealArray( 0, 1, -1.49012e-08, -8.9407e-08, 1.67638e-08, 4.56296e-07, -0.0714001, -0.384131, 0.920514, 1, 1, 1, 0.833333, 1, -1.49012e-08, -8.9407e-08, 1.67638e-08, 4.56296e-07, -0.0714001, -0.384131, 0.920514, 1, 1, 1 )
+tracks/4/type = "transform"
+tracks/4/path = NodePath("Armature:upperarm.l")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = PoolRealArray( 0, 1, -2.98023e-08, -1.49012e-07, 1.15484e-07, -0.172847, 0.0435481, 0.00897227, 0.983945, 1, 1, 1, 0.833333, 1, -2.98023e-08, -1.49012e-07, 1.15484e-07, -0.172847, 0.0435481, 0.00897227, 0.983945, 1, 1, 1 )
+tracks/5/type = "transform"
+tracks/5/path = NodePath("Armature:lowerleg.r")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = PoolRealArray( 0, 1, -1.49012e-08, 0, -2.23517e-08, 1.87972e-06, 2.15001e-08, -0.319384, 0.947625, 1, 1, 1, 0.0666667, 1, -7.45058e-09, 0, -2.23517e-08, 2.0076e-06, 7.57984e-08, -0.346958, 0.937881, 1, 1, 1, 0.133333, 1, 3.72529e-08, 5.96046e-08, -2.42144e-08, 2.84159e-06, 4.00474e-08, -0.483214, 0.875502, 1, 1, 1, 0.2, 1, 3.72529e-08, 5.96046e-08, -2.23517e-08, 3.43798e-06, -4.50967e-09, -0.5894, 0.807841, 1, 1, 1, 0.266667, 1, -5.96046e-08, 2.98023e-08, -2.23517e-08, 2.94009e-06, 1.48455e-08, -0.512033, 0.858966, 1, 1, 1, 0.333333, 1, 6.70552e-08, 0, -2.42144e-08, 1.74832e-06, 6.76017e-08, -0.301124, 0.953585, 1, 1, 1, 0.4, 1, 2.23517e-08, 2.98023e-08, -2.23517e-08, 8.32289e-07, 2.59438e-08, -0.144557, 0.989496, 1, 1, 1, 0.466667, 1, 0, 0, -2.23517e-08, 7.13273e-07, 7.85008e-08, -0.120549, 0.992707, 1, 1, 1, 0.533333, 1, 2.23517e-08, 2.98023e-08, -2.23517e-08, 7.16638e-07, -4.28467e-08, -0.11882, 0.992916, 1, 1, 1, 0.6, 1, -2.98023e-08, 0, -2.23517e-08, 7.08378e-07, 1.68378e-08, -0.118388, 0.992967, 1, 1, 1, 0.666667, 1, -6.70552e-08, -2.98023e-08, -2.04891e-08, 7.88051e-07, -3.5815e-08, -0.139547, 0.990215, 1, 1, 1, 0.8, 1, -1.49012e-08, 0, -2.23517e-08, 1.77187e-06, -2.14921e-08, -0.303144, 0.952945, 1, 1, 1, 0.833333, 1, -1.49012e-08, 0, -2.23517e-08, 1.87972e-06, 2.15001e-08, -0.319384, 0.947625, 1, 1, 1 )
+tracks/6/type = "transform"
+tracks/6/path = NodePath("Armature:upperleg.r")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = PoolRealArray( 0, 1, 2.23517e-08, 8.19564e-08, 4.09782e-08, 0.0516237, 0.00337519, -0.000370021, 0.998661, 1, 1, 1, 0.0666667, 1, 2.23517e-08, 1.56462e-07, 3.35276e-08, 0.0995864, 0.00650914, -0.000715793, 0.995007, 1, 1, 1, 0.133333, 1, 2.98023e-08, 1.86265e-07, 3.35276e-08, 0.344847, 0.0225353, -0.00248449, 0.938385, 1, 1, 1, 0.2, 1, 2.98023e-08, 1.3411e-07, 3.35276e-08, 0.533691, 0.034876, -0.00384681, 0.844951, 1, 1, 1, 0.266667, 1, 3.72529e-08, 1.56462e-07, 3.72529e-08, 0.514519, 0.0336226, -0.00370925, 0.856812, 1, 1, 1, 0.333333, 1, 2.23517e-08, 8.19564e-08, 2.98023e-08, 0.423683, 0.0276877, -0.0030533, 0.905382, 1, 1, 1, 0.4, 1, 2.98023e-08, 1.2666e-07, 3.35276e-08, 0.279215, 0.0182476, -0.00201034, 0.960053, 1, 1, 1, 0.466667, 1, 3.72529e-08, 1.78814e-07, 2.98023e-08, 0.0884173, 0.00577958, -0.000635196, 0.996067, 1, 1, 1, 0.533333, 1, 2.23517e-08, 8.19564e-08, 4.09782e-08, -0.110343, -0.00720958, 0.000796105, 0.993867, 1, 1, 1, 0.6, 1, 4.47035e-08, 1.71363e-07, 4.09782e-08, -0.225491, -0.014735, 0.0016256, 0.974132, 1, 1, 1, 0.666667, 1, 2.98023e-08, 2.01166e-07, 3.35276e-08, -0.213433, -0.0139466, 0.00153888, 0.976857, 1, 1, 1, 0.733333, 1, 2.23517e-08, 4.47035e-08, 4.09782e-08, -0.0880476, -0.00575204, 0.00063546, 0.996099, 1, 1, 1, 0.8, 1, 3.72529e-08, 1.71363e-07, 3.35276e-08, 0.0271645, 0.00177693, -0.00019406, 0.999629, 1, 1, 1, 0.833333, 1, 2.23517e-08, 8.19564e-08, 4.09782e-08, 0.0516237, 0.00337519, -0.000370021, 0.998661, 1, 1, 1 )
+tracks/7/type = "transform"
+tracks/7/path = NodePath("Armature:lowerarm.r")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = PoolRealArray( 0, 1, 7.45058e-08, 2.98023e-08, -4.47035e-08, 4.21897e-07, 0.0714001, 0.384131, 0.920514, 1, 1, 1, 0.833333, 1, 7.45058e-08, 2.98023e-08, -4.47035e-08, 4.21897e-07, 0.0714001, 0.384131, 0.920514, 1, 1, 1 )
+tracks/8/type = "transform"
+tracks/8/path = NodePath("Armature:upperarm.r")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = PoolRealArray( 0, 1, 2.98023e-08, -1.49012e-07, 1.15484e-07, -0.172847, -0.0435482, -0.00897253, 0.983945, 1, 1, 1, 0.833333, 1, 2.98023e-08, -1.49012e-07, 1.15484e-07, -0.172847, -0.0435482, -0.00897253, 0.983945, 1, 1, 1 )
+tracks/9/type = "transform"
+tracks/9/path = NodePath("Armature:body")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = PoolRealArray( 0, 1, 5.72225e-18, -0.0520514, 0.0171157, 0.110872, 6.91256e-19, -3.49654e-17, 0.993835, 1, 1, 1, 0.0666667, 1, 5.72226e-18, -0.052197, 0.0171636, 0.106733, 6.91318e-19, -3.49683e-17, 0.994288, 1, 1, 1, 0.2, 1, 5.8589e-18, -0.0535567, 0.0176107, 0.0680124, 4.70598e-19, -2.38038e-17, 0.997684, 1, 1, 1, 0.266667, 1, 5.89307e-18, -0.0532894, 0.0175228, 0.0756305, 4.15481e-19, -2.10155e-17, 0.997136, 1, 1, 1, 0.333333, 1, 5.89305e-18, -0.0525982, 0.0172956, 0.0953194, 4.15505e-19, -2.10169e-17, 0.995447, 1, 1, 1, 0.4, 1, -1.07615e-18, -0.0521161, 0.017137, 0.109036, -2.48555e-19, 1.25737e-17, 0.994038, 1, 1, 1, 0.466667, 1, -5.7223e-18, -0.05229, 0.0171942, 0.104089, -6.91322e-19, 3.49699e-17, 0.994568, 1, 1, 1, 0.533333, 1, -5.7223e-18, -0.0529662, 0.0174165, 0.0848412, -6.91395e-19, 3.49738e-17, 0.996395, 1, 1, 1, 0.6, 1, -5.7906e-18, -0.0535082, 0.0175948, 0.0693925, -5.80935e-19, 2.93861e-17, 0.997589, 1, 1, 1, 0.666667, 1, -5.8931e-18, -0.0534436, 0.0175735, 0.0712356, -4.15424e-19, 2.10141e-17, 0.99746, 1, 1, 1, 0.8, 1, -3.57004e-18, -0.0521807, 0.0171583, 0.107199, -1.94095e-19, 9.8182e-18, 0.994238, 1, 1, 1, 0.833333, 1, 5.72225e-18, -0.0520514, 0.0171157, 0.110872, 6.91256e-19, -3.49654e-17, 0.993835, 1, 1, 1 )
+
+[sub_resource type="Animation" id=7]
+length = 8.0
+
+[sub_resource type="Animation" id=8]
+resource_name = "convo"
+length = 14.0
+tracks/0/type = "method"
+tracks/0/path = NodePath("WoW1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 4.5, 7.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_display"
+}, {
+"args": [  ],
+"method": "end_display"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("WoW2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 8, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_display"
+}, {
+"args": [  ],
+"method": "end_display"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("Sophie")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_display"
+}, {
+"args": [  ],
+"method": "end_display"
+} ]
+}
+
 [node name="WitchCart" type="Spatial"]
 
 [node name="Cart" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
 
 [node name="Cart" parent="Cart" index="0"]
 material/0 = ExtResource( 2 )
 
 [node name="Windows" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="Window" parent="Windows" instance=ExtResource( 3 )]
+editor/display_folded = true
+visible = false
 
 [node name="Window" parent="Windows/Window" index="0"]
 transform = Transform( 0, 1.03895, 6.1926e-08, 6.1926e-08, 0, -1.03895, -1.03895, 6.1926e-08, -1.23852e-07, 0.431761, 1.40994, -1.26512 )
 material/0 = ExtResource( 4 )
 
 [node name="Window2" parent="Windows" instance=ExtResource( 3 )]
+editor/display_folded = true
 visible = false
 
 [node name="Window" parent="Windows/Window2" index="0"]
 transform = Transform( 0, 1.03895, 6.1926e-08, 6.1926e-08, 0, -1.03895, -1.03895, 6.1926e-08, -1.23852e-07, 0.431761, 1.40994, -1.26512 )
-material/0 = SubResource( 2 )
+material/0 = SubResource( 1 )
 
 [node name="Window3" parent="Windows" instance=ExtResource( 3 )]
-visible = false
+editor/display_folded = true
 
 [node name="Window" parent="Windows/Window3" index="0"]
 transform = Transform( 0, 1.03895, 6.1926e-08, 6.1926e-08, 0, -1.03895, -1.03895, 6.1926e-08, -1.23852e-07, 0.431761, 1.40994, -1.26512 )
-material/0 = SubResource( 3 )
+material/0 = SubResource( 2 )
 
 [node name="Window4" parent="Windows" instance=ExtResource( 3 )]
+editor/display_folded = true
 visible = false
 
 [node name="Window" parent="Windows/Window4" index="0"]
 transform = Transform( 0, 1.03895, 6.1926e-08, 6.1926e-08, 0, -1.03895, -1.03895, 6.1926e-08, -1.23852e-07, 0.431761, 1.40994, -1.26512 )
-material/0 = SubResource( 4 )
+material/0 = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Windows"]
 autoplay = "talk"
-anims/talk = SubResource( 5 )
+anims/talk = SubResource( 4 )
 
-[node name="Minion" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.176671 )
+[node name="Minion3" parent="." instance=ExtResource( 9 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1431 )
 
-[node name="Minion" parent="Minion/Armature" index="0"]
+[node name="Minion" parent="Minion3/Armature" index="0"]
 material/0 = ExtResource( 10 )
 
-[node name="AnimationPlayer" parent="Minion" index="2"]
+[node name="AnimationPlayer" parent="Minion3" index="2"]
 autoplay = "walk-loop"
+anims/walk-loop = SubResource( 5 )
 
 [node name="Minion2" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.22929 )
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.44414 )
 
 [node name="Minion" parent="Minion2/Armature" index="0"]
 material/0 = ExtResource( 10 )
 
 [node name="AnimationPlayer" parent="Minion2" index="2"]
 autoplay = "walk-loop"
-anims/walk-loop = SubResource( 1 )
+anims/walk-loop = SubResource( 6 )
+
+[node name="Background" type="Sprite3D" parent="."]
+transform = Transform( -1.0696e-07, 0, -2.44696, 0, 2.44696, 0, 2.44696, 0, -1.0696e-07, -4, 5.38343, 4.69795 )
+transparent = false
+texture = ExtResource( 11 )
+script = ExtResource( 12 )
+move_speed = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
+autoplay = "scroll"
+anims/scroll = SubResource( 7 )
+
+[node name="Background3" type="Sprite3D" parent="Background"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, 8.74228e-08, 0, 1, 10.2385, 0, -4.76837e-07 )
+texture = ExtResource( 11 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -4.35472e-08, 0.0866004, 0.996243, 3.78542e-09, 0.996243, -0.0866004, -1, 0, -4.37114e-08, 2.0656, 1.39389, -1.28668 )
+current = true
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="WoW1" parent="Control" instance=ExtResource( 13 )]
+margin_left = 50.8855
+margin_top = 31.9025
+margin_right = 11.8855
+margin_bottom = 22.9025
+text_to_show = "I'm sorry dear, my talent lies in casting spells, not breaking them"
+char_name = "Witch of the Waste"
+
+[node name="WoW2" parent="Control" instance=ExtResource( 13 )]
+margin_left = 56.7902
+margin_top = 37.0592
+margin_right = 17.7902
+margin_bottom = 28.0592
+text_to_show = "Bye Granny..."
+char_name = "Witch of the Waste"
+
+[node name="Sophie" parent="Control" instance=ExtResource( 13 )]
+margin_left = 270.469
+margin_top = 39.8578
+margin_right = 231.469
+margin_bottom = 30.8578
+text_to_show = "if you're so great why don't you break the spell you put on me?"
+char_name = "Sophie"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+autoplay = "convo"
+anims/convo = SubResource( 8 )
+
+[node name="OldSophie" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.569638, 0, -1.81959 )
+script = ExtResource( 15 )
 
 [editable path="Cart"]
 
@@ -241,6 +441,6 @@ anims/walk-loop = SubResource( 1 )
 
 [editable path="Windows/Window4"]
 
-[editable path="Minion"]
+[editable path="Minion3"]
 
 [editable path="Minion2"]

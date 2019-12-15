@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://TextDisplay.gd" type="Script" id=1]
+[ext_resource path="res://buttonLong_blue_pressed.png" type="Texture" id=2]
+
+[sub_resource type="Theme" id=1]
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 190, 45 )
+margin_left = 8.17569
+margin_right = 8.39084
+margin_top = 8.46768
+margin_bottom = 6.97357
+
+[node name="TextDisplay" type="Label"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -848.0
+margin_bottom = -586.0
+rect_scale = Vector2( 1.4, 1.4 )
+text = "12345678901234567890"
+autowrap = true
+script = ExtResource( 1 )
+text_to_show = "asdasdasd"
+char_name = "Witch of the Wastes"
+
+[node name="Panel" type="Panel" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+theme = SubResource( 1 )
+custom_styles/panel = SubResource( 2 )
