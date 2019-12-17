@@ -11,6 +11,7 @@
 [sub_resource type="Animation" id=1]
 resource_name = "showtext"
 length = 12.0
+loop = true
 tracks/0/type = "method"
 tracks/0/path = NodePath("TextDisplay2")
 tracks/0/interp = 1
@@ -87,18 +88,19 @@ autoplay = "showtext"
 anims/showtext = SubResource( 1 )
 
 [node name="TextDisplay" parent="." instance=ExtResource( 7 )]
-margin_left = 98.0
-margin_top = 49.0
-margin_right = -541.0
-margin_bottom = -400.0
+margin_left = 13.8796
+margin_top = 11.5103
+margin_right = -305.12
+margin_bottom = -197.49
 text_to_show = "Look there"
 char_name = "Howl"
 
 [node name="TextDisplay2" parent="." instance=ExtResource( 7 )]
-margin_left = 98.0
-margin_top = 49.0
-margin_right = 98.0
-margin_bottom = 49.0
+margin_left = 14.0379
+margin_top = 12.0
+margin_right = -154.962
+margin_bottom = -197.0
+text = "1234567890124567890"
 text_to_show = "that used to be my secret hideaway"
 char_name = "Howl"
 

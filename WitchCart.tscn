@@ -256,6 +256,7 @@ length = 8.0
 [sub_resource type="Animation" id=8]
 resource_name = "convo"
 length = 14.0
+loop = true
 tracks/0/type = "method"
 tracks/0/path = NodePath("WoW1")
 tracks/0/interp = 1
@@ -400,26 +401,26 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="WoW1" parent="Control" instance=ExtResource( 13 )]
-margin_left = 50.8855
-margin_top = 31.9025
-margin_right = 11.8855
-margin_bottom = 22.9025
+margin_left = 23.5831
+margin_top = 24.5081
+margin_right = -15.4169
+margin_bottom = 15.5081
 text_to_show = "I'm sorry dear, my talent lies in casting spells, not breaking them"
 char_name = "Witch of the Waste"
 
 [node name="WoW2" parent="Control" instance=ExtResource( 13 )]
-margin_left = 56.7902
-margin_top = 37.0592
-margin_right = 17.7902
-margin_bottom = 28.0592
+margin_left = 24.9374
+margin_top = 25.6832
+margin_right = -14.0626
+margin_bottom = 16.6832
 text_to_show = "Bye Granny..."
 char_name = "Witch of the Waste"
 
 [node name="Sophie" parent="Control" instance=ExtResource( 13 )]
-margin_left = 270.469
-margin_top = 39.8578
-margin_right = 231.469
-margin_bottom = 30.8578
+margin_left = 169.791
+margin_top = 9.14259
+margin_right = 130.791
+margin_bottom = 0.142597
 text_to_show = "if you're so great why don't you break the spell you put on me?"
 char_name = "Sophie"
 

@@ -6,7 +6,7 @@ uniform sampler2D albedoTex : hint_albedo;
 uniform float alpha_scissor_threshold;
 uniform float specular_intensity : hint_range(0, 1);
 uniform float resolution = 256;
-uniform float cull_distance = 5;
+uniform float cull_distance = 50;
 uniform vec2 uv_scale = vec2(1.0, 1.0);
 uniform vec2 uv_offset = vec2(.0, .0);
 

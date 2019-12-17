@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=2]
+
+[ext_resource path="res://buttonLong_blue_pressed.png" type="Texture" id=1]
+
+[resource]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 190, 45 )
+margin_left = 8.17569
+margin_right = 8.39084
+margin_top = 8.46768
+margin_bottom = 6.97357
